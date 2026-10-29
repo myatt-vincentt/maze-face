@@ -9,6 +9,7 @@ move fast and it dissolves into loose loops, hold still and it sharpens again. L
 fades back to a blank page; the next person grows fresh. The camera picture itself is never
 shown, and the page fills the whole screen.
 
+- Thumbnail: `public/images/maze-face-thumbnail.jpg` (the share image).
 - The lines are a reaction-diffusion simulation (Gray-Scott, labyrinth regime) run on the GPU
   several steps a frame, its scale set by the camera's tone, kept to the person by the steadied
   portrait mask, and drawn as even-width anti-aliased contours on paper (`src/maze/MazeScene.tsx`,

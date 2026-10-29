@@ -1,3 +1,37 @@
+# Maze Face
+
+You, drawn live as one winding maze line on white paper. The page starts blank; when your face
+shows, the line seeds at your face and grows out through you until the whole portrait is drawn,
+in about five seconds. Tone comes only from the spacing of the lines: tight in the dark (hair,
+shadows), wide open loops in the light (skin, light clothes). Only you are drawn, with a clean
+outline; the background stays plain paper. The drawing re-forms with a little lag as you move;
+move fast and it dissolves into loose loops, hold still and it sharpens again. Leave, and it
+fades back to a blank page; the next person grows fresh. The camera picture itself is never
+shown, and the page fills the whole screen.
+
+- The lines are a reaction-diffusion simulation (Gray-Scott, labyrinth regime) run on the GPU
+  several steps a frame, its scale set by the camera's tone, kept to the person by the steadied
+  portrait mask, and drawn as even-width anti-aliased contours on paper (`src/maze/MazeScene.tsx`,
+  `shaders.ts`, `passes.ts`).
+- The portrait's life (blank, growing, drawn, fading) and the adaptive quality are pure and
+  unit-tested (`src/maze/sim/growth.ts`, `sim/quality.ts`). Phones start one quality level lower;
+  the simulation steps down while frames run slow and back up when there is room.
+- The only hint is a small see-through ghost face low in the centre (the SDK's
+  `FaceExpressionHint`, `public/models/face-v1.glb`, see `CREDITS.md`); it goes for good once the
+  first portrait is drawn.
+- Camera mini-map (`src/maze/MiniMap.tsx`): a small glass pill top-right unfolds a live camera
+  thumbnail (mirrored like the drawing, the person's outline traced faintly on it); tap the
+  thumbnail or the pill to fold it. Folded by default, remembered while the page is open; it
+  never affects the drawing.
+- `src/App.tsx` uses a full-window container instead of the 9:16 frame; re-apply after a template
+  upgrade.
+- Dev preview without a camera: the media switcher starts on the SDK's sample video. Keys: `R`
+  restarts the growth, `[` / `]` tighter / wider lines, `M` pretends you are moving fast, `C`
+  cycles the view (paper, camera faintly under it, tone). `window.__maze` has read-outs (growth,
+  simulation size, steps per frame, motion). How it works: `PLAN.md`.
+
+---
+
 # v2-template
 
 The Vincentt starter app: a real React + R3F + Vincentt XR SDK (`@vincentt-xr/sdk`)

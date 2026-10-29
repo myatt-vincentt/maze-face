@@ -1,9 +1,10 @@
 {
-  "title": "XR App - Vincentt",
-  "description": "An AR experience built with Vincentt",
+  "title": "Maze Face",
+  "description": "You, drawn live as one winding maze line on white paper: it grows out from your face and re-forms as you move.",
   "image": "/images/og-default.jpg",
-  "imageAlt": "Vincentt — Augmented Reality App builder",
+  "imageAlt": "Maze Face — a camera experience built with Vincentt",
   "imageWidth": 1200,
   "imageHeight": 630,
-  "imageType": "image/jpeg"
+  "imageType": "image/jpeg",
+  "url": "https://maze-face.vincentt.app"
 }
